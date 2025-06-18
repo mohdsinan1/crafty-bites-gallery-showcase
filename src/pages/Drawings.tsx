@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,24 +8,24 @@ const Drawings = () => {
   const drawings = [
     {
       id: 1,
-      title: "Abstract Harmony",
-      description: "A vibrant abstract piece exploring color and form",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-      category: "Abstract"
+      title: "Sacred Architecture",
+      description: "Beautiful watercolor painting of the Prophet's Mosque with intricate details",
+      image: "/lovable-uploads/17fc901c-b86d-4f9e-a282-f56f51bb2263.png",
+      category: "Religious Art"
     },
     {
       id: 2,
-      title: "Portrait Study",
-      description: "Detailed character study in charcoal",
-      image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop",
-      category: "Portrait"
+      title: "Anime Character Study",
+      description: "Detailed pencil sketch of an anime girl character with flowing hair",
+      image: "/lovable-uploads/77510403-4879-4b1c-b572-cce0f41e3289.png",
+      category: "Character Design"
     },
     {
       id: 3,
-      title: "Nature's Beauty",
-      description: "Botanical illustration of local flora",
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&h=300&fit=crop",
-      category: "Nature"
+      title: "Girl with Cats",
+      description: "Charming illustration of a girl surrounded by cute cats and plants",
+      image: "/lovable-uploads/30a12034-70df-4ba3-93aa-463f2a4fe9dc.png",
+      category: "Illustration"
     },
     {
       id: 4,
