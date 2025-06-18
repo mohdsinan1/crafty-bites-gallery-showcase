@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -60,7 +59,7 @@ const Bouquets = () => {
               <img 
                 src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
                 alt="Crafty Bites Logo" 
-                className="w-10 h-10"
+                className="w-10 h-10 rounded-lg"
               />
               <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
                 Crafty Bites
@@ -96,13 +95,13 @@ const Bouquets = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {bouquets.map((bouquet) => (
-              <Card key={bouquet.id} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg overflow-hidden">
+              <Card key={bouquet.id} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg overflow-hidden rounded-xl">
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden">
                     <img 
                       src={bouquet.image} 
                       alt={bouquet.title}
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500 rounded-t-xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                       <div className="p-4 text-white">

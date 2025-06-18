@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -46,7 +45,7 @@ const Index = () => {
               <img 
                 src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
                 alt="Crafty Bites Logo" 
-                className="w-12 h-12"
+                className="w-12 h-12 rounded-lg"
               />
               <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
                 Crafty Bites
@@ -77,7 +76,7 @@ const Index = () => {
               <img 
                 src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
                 alt="Crafty Bites Logo" 
-                className="w-32 h-32 drop-shadow-2xl"
+                className="w-32 h-32 drop-shadow-2xl rounded-2xl"
               />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
@@ -169,7 +168,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
               alt="Crafty Bites Logo" 
-              className="w-10 h-10"
+              className="w-10 h-10 rounded-lg"
             />
             <span className="text-2xl font-bold">Crafty Bites</span>
           </div>
