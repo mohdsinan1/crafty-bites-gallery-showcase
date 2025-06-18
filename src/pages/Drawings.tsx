@@ -2,7 +2,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowLeft, Star, Palette, Eye, Heart } from "lucide-react";
+import { useState } from "react";
 
 const Drawings = () => {
   const drawings = [
@@ -106,7 +108,29 @@ const Drawings = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                       <div className="p-4 text-white">
                         <div className="flex items-center space-x-4">
-                          <Eye className="w-5 h-5" />
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <button className="hover:scale-110 transition-transform">
+                                <Eye className="w-5 h-5" />
+                              </button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl w-full max-h-[90vh] p-0">
+                              <div className="relative">
+                                <img 
+                                  src={drawing.image} 
+                                  alt={drawing.title}
+                                  className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                                />
+                                <div className="p-6">
+                                  <h3 className="text-2xl font-bold mb-2">{drawing.title}</h3>
+                                  <p className="text-gray-600 mb-2">{drawing.description}</p>
+                                  <span className="text-sm font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full">
+                                    {drawing.category}
+                                  </span>
+                                </div>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
                           <Heart className="w-5 h-5" />
                         </div>
                       </div>
