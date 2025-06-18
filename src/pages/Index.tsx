@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Palette, Heart, Hammer, Scissors, ArrowRight, Star } from "lucide-react";
+import { Palette, Heart, Hammer, Scissors, ArrowRight } from "lucide-react";
 
 const Index = () => {
   const categories = [
@@ -42,10 +42,12 @@ const Index = () => {
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-orange-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full flex items-center justify-center">
-                <Star className="w-6 h-6 text-white" />
-              </div>
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
+                alt="Crafty Bites Logo" 
+                className="w-12 h-12"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
                 Crafty Bites
               </span>
@@ -71,8 +73,12 @@ const Index = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-8">
-            <div className="w-24 h-24 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
-              <Star className="w-12 h-12 text-white" />
+            <div className="flex justify-center mb-6">
+              <img 
+                src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
+                alt="Crafty Bites Logo" 
+                className="w-32 h-32 drop-shadow-2xl"
+              />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
@@ -159,10 +165,12 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full flex items-center justify-center">
-              <Star className="w-5 h-5 text-white" />
-            </div>
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <img 
+              src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
+              alt="Crafty Bites Logo" 
+              className="w-10 h-10"
+            />
             <span className="text-2xl font-bold">Crafty Bites</span>
           </div>
           <p className="text-gray-400 mb-4">Creating beautiful, handcrafted pieces with love and passion</p>

@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Star, Heart, Flower, Gift } from "lucide-react";
+import { ArrowLeft, Heart, Flower, Gift } from "lucide-react";
 
 const Bouquets = () => {
   const bouquets = [
@@ -56,10 +56,12 @@ const Bouquets = () => {
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-pink-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full flex items-center justify-center">
-                <Star className="w-6 h-6 text-white" />
-              </div>
+            <Link to="/" className="flex items-center space-x-3">
+              <img 
+                src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
+                alt="Crafty Bites Logo" 
+                className="w-10 h-10"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
                 Crafty Bites
               </span>
@@ -90,7 +92,6 @@ const Bouquets = () => {
         </div>
       </section>
 
-      {/* Gallery */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -132,7 +133,6 @@ const Bouquets = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-pink-100 to-rose-100">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
