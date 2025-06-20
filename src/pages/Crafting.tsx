@@ -1,52 +1,56 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Star, Scissors, Sparkles, Gem } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ArrowLeft, Star, Scissors, Eye, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Crafting = () => {
+  const [likedProjects, setLikedProjects] = useState<number[]>([]);
   const craftingProjects = [
     {
       id: 1,
-      title: "Handmade Jewelry",
-      description: "Unique necklaces and earrings with natural stones",
-      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop",
-      category: "Jewelry"
+      title: "Aesthetic Wall Art Display",
+      description: "A cozy, handcrafted wall decor arrangement",
+      image: "/lovable-uploads/IMG_0232.jpg",
+      category: "Room Decor"
     },
     {
       id: 2,
-      title: "Fabric Art Pieces",
-      description: "Textile wall hangings and decorative patches",
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=300&fit=crop",
-      category: "Textile"
+      title: "Embroidery Hoop",
+      description: "A handcrafted embroidery hoop featuring a custom name and date",
+      image: "/lovable-uploads/IMG_0270.jpg",
+      category: "Hand Embroidery"
     },
     {
       id: 3,
-      title: "Scrapbook Albums",
-      description: "Memory books with personalized touches",
-      image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
-      category: "Paper Craft"
+      title: "Calligraphy Wall Art",
+      description: "A stunning handcrafted piece of Islamic calligraphy",
+      image: "/lovable-uploads/IMG_4237.jpg",
+      category: "Religious Decor"
     },
     {
       id: 4,
-      title: "Decorative Candles",
-      description: "Hand-poured candles with natural scents",
-      image: "https://images.unsplash.com/photo-1602874801006-2b8b482d0e2a?w=400&h=300&fit=crop",
-      category: "Candle Making"
+      title: "Desk Decor Arrangement",
+      description: "A creative mix of handmade vases, dried flowers, and motivational wall stickers",
+      image: "/lovable-uploads/IMG_0239.jpg",
+      category: "Handmade Room Decor"
     },
     {
       id: 5,
-      title: "Embroidered Pillows",
-      description: "Custom pillows with intricate embroidery",
-      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=300&fit=crop",
-      category: "Embroidery"
+      title: "Calligraphy Wall Art",
+      description: "A stunning handcrafted piece of Islamic calligraphy",
+      image: "/lovable-uploads/IMG_4238.jpg",
+      category: "Religious Decor"
     },
     {
       id: 6,
-      title: "Clay Pottery",
-      description: "Hand-thrown bowls and decorative pieces",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-      category: "Pottery"
-    }
+      title: "White Handmade Teddy",
+      description: "A handmade soft toy teddy",
+      image: "/public/lovable-uploads/IMG_8711.jpg",
+      category: "Handmade Soft Toys"
+    },
   ];
 
   return (
@@ -56,9 +60,11 @@ const Crafting = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-full flex items-center justify-center">
-                <Star className="w-6 h-6 text-white" />
-              </div>
+            <img 
+                src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
+                alt="Crafty Bites Logo" 
+                className="w-10 h-10 rounded-lg"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 Crafty Bites
               </span>
@@ -83,8 +89,8 @@ const Crafting = () => {
             </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A diverse collection of handmade crafts and DIY projects. From jewelry to home decor, 
-            each piece is created with passion and attention to detail.
+          Bringing imagination to life with unique handmade creations.<br></br>
+          Every craft tells a story of passion and creativity.
           </p>
         </div>
       </section>
@@ -105,8 +111,45 @@ const Crafting = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                       <div className="p-4 text-white">
                         <div className="flex items-center space-x-4">
-                          <Sparkles className="w-5 h-5" />
-                          <Gem className="w-5 h-5" />
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <button className="hover:scale-110 transition-transform">
+                                <Eye className="w-5 h-5" />
+                              </button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl w-full max-h-[90vh] p-0">
+                              <div className="relative">
+                                <img 
+                                  src={project.image} 
+                                  alt={project.title}
+                                  className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                                />
+                                <div className="p-6">
+                                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                                  <p className="text-gray-600 mb-2">{project.description}</p>
+                                  <span className="text-sm font-medium text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">
+                                    {project.category}
+                                  </span>
+                                </div>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+                          <motion.div
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => {
+                              if (likedProjects.includes(project.id)) {
+                                setLikedProjects(likedProjects.filter(id => id !== project.id));
+                              } else {
+                                setLikedProjects([...likedProjects, project.id]);
+                              }
+                            }}
+                          >
+                            <Heart 
+                              className="w-5 h-5"
+                              fill={likedProjects.includes(project.id) ? "#ff0000" : "none"}
+                            />
+                          </motion.div>
                         </div>
                       </div>
                     </div>

@@ -6,17 +6,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, Star, Mail, Phone, MapPin, Send, Clock, Heart } from "lucide-react";
+import { ArrowLeft, Star, Mail, Phone, MapPin, Send, Clock, Heart, Instagram } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { sendContactEmail,ContactFormData } from "../emailService";
+
+
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
     phone: "",
     project: "",
     message: ""
   });
+  
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,14 +28,50 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your interest. I'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", phone: "", project: "", message: "" });
+    try {
+      await sendContactEmail(formData);
+      toast({
+        title: "Message Sent!",
+        description: (
+          <div className="flex flex-col space-y-2">
+            <p className="text-sm font-medium">Thank you for your interest!</p>
+            <p className="text-sm text-gray-600">I'll get back to you within 24 hours.</p>
+            <div className="flex items-center space-x-2">
+              <Heart className="w-4 h-4 text-red-500" />
+              <p className="text-xs text-gray-500">Your message means a lot to me!</p>
+            </div>
+          </div>
+        ),
+        className: "bg-white border border-blue-200 shadow-lg",
+        style: {
+          borderRadius: '8px',
+          padding: '16px 24px',
+        },
+      });
+      setFormData({ name: "", email: "", phone: "", project: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Oops!",
+        description: (
+          <div className="flex flex-col space-y-2">
+            <p className="text-sm font-medium">Something went wrong!</p>
+            <p className="text-sm text-gray-600">Please check your internet connection and try again.</p>
+            <div className="flex items-center space-x-2">
+              <Clock className="w-4 h-4 text-gray-400" />
+              <p className="text-xs text-gray-500">If the issue persists, please try later.</p>
+            </div>
+          </div>
+        ),
+        variant: "destructive",
+        className: "bg-white border border-red-200 shadow-lg",
+        style: {
+          borderRadius: '8px',
+          padding: '16px 24px',
+        },
+      });
+    }
   };
 
   return (
@@ -41,9 +81,11 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full flex items-center justify-center">
-                <Star className="w-6 h-6 text-white" />
-              </div>
+            <img 
+                src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
+                alt="Crafty Bites Logo" 
+                className="w-10 h-10 rounded-lg"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 Crafty Bites
               </span>
@@ -68,7 +110,7 @@ const Contact = () => {
             </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to bring your creative vision to life? Let's discuss your project and create something amazing together.
+            Ready to bring your creative vision to life? Let's discuss your work and create something amazing together.
           </p>
         </div>
       </section>
@@ -178,7 +220,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">Email Me</h3>
-                      <p className="text-gray-600 mb-1">hello@craftybites.com</p>
+                      <p className="text-gray-600 mb-1">craftyybites@gmail.com</p>
                       <p className="text-sm text-gray-500">I respond within 24 hours</p>
                     </div>
                   </div>
@@ -188,29 +230,20 @@ const Contact = () => {
               <Card className="shadow-xl border-0">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-400 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Instagram className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Call Me</h3>
-                      <p className="text-gray-600 mb-1">(555) 123-CRAFT</p>
-                      <p className="text-sm text-gray-500">Mon-Fri, 9AM-6PM EST</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-xl border-0">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Visit My Studio</h3>
-                      <p className="text-gray-600 mb-1">123 Creative Street</p>
-                      <p className="text-gray-600 mb-1">Artisan District, CA 90210</p>
-                      <p className="text-sm text-gray-500">By appointment only</p>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Follow Me</h3>
+                      <a 
+                        href="https://www.instagram.com/craftybitess?igsh=bnplN3EzODEwcXZm&utm_source=ig_contact_invite " 
+                        target="https://www.instagram.com/craftybitess?igsh=bnplN3EzODEwcXZm&utm_source=ig_contact_invite " 
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-pink-500 transition-colors"
+                      >
+                        @crafty.bites
+                      </a>
+                      <p className="text-sm text-gray-500 mt-1">Join for daily updates and inspiration!</p>
                     </div>
                   </div>
                 </CardContent>
@@ -224,10 +257,10 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">Response Time</h3>
-                      <p className="text-gray-600 mb-2">I aim to respond to all inquiries within 24 hours. For urgent projects, please call directly.</p>
+                      <p className="text-gray-600 mb-2">I aim to respond to all inquiries within 24 hours. For urgent works, please connect directly.</p>
                       <div className="flex items-center text-sm text-orange-600">
                         <Heart className="w-4 h-4 mr-1" />
-                        Every project gets my personal attention
+                        Every work gets my personal attention
                       </div>
                     </div>
                   </div>
@@ -239,7 +272,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50">
+      {/* <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             Frequently Asked Questions
@@ -274,7 +307,7 @@ const Contact = () => {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

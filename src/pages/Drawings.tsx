@@ -1,13 +1,22 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowLeft, Star, Palette, Eye, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 const Drawings = () => {
+  const [likedDrawings, setLikedDrawings] = useState<number[]>([]);
   const drawings = [
+
+    {
+      id: 3,
+      title: "Girl with Cats",
+      description: "Charming illustration of a girl surrounded by cute cats and plants",
+      image: "/lovable-uploads/30a12034-70df-4ba3-93aa-463f2a4fe9dc.png",
+      category: "Illustration"
+    },
     {
       id: 1,
       title: "Sacred Architecture",
@@ -17,39 +26,49 @@ const Drawings = () => {
     },
     {
       id: 2,
-      title: "Anime Character Study",
+      title: "Character Study",
       description: "Detailed pencil sketch of an anime girl character with flowing hair",
       image: "/lovable-uploads/77510403-4879-4b1c-b572-cce0f41e3289.png",
       category: "Character Design"
     },
-    {
-      id: 3,
-      title: "Girl with Cats",
-      description: "Charming illustration of a girl surrounded by cute cats and plants",
-      image: "/lovable-uploads/30a12034-70df-4ba3-93aa-463f2a4fe9dc.png",
-      category: "Illustration"
-    },
-    {
-      id: 4,
-      title: "Urban Sketches",
-      description: "Quick city scenes captured in pencil",
-      image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
-      category: "Urban"
-    },
+   
     {
       id: 5,
-      title: "Fantasy Realm",
-      description: "Imaginative creatures from another world",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-      category: "Fantasy"
+      title: "Sacred Architecture",
+      description: "Beautiful watercolor painting of The Qabha Sharif",
+      image: "/lovable-uploads/IMG_1924.png",
+      category: "Religious Art"
     },
     {
       id: 6,
-      title: "Still Life Study",
-      description: "Classic arrangement with modern twist",
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop",
-      category: "Still Life"
-    }
+      title: "Character Sketch ",
+      description: "A hand-drawn character showing unique style and expression.",
+      image: "/lovable-uploads/IMG_4641.png",
+      category: "Character Design"
+    },
+    {
+      id: 7,
+      title: "Drawing",
+      description: "A hand-drawn character showing unique style and expression.",
+      image: "/lovable-uploads/dr1.jpg",
+      category: "Illustration"
+    },
+    {
+      id: 8,
+      title: "Character Study",
+      description: "A hand-drawn character showing unique style and expression.",
+      image: "/lovable-uploads/dr2.jpg",
+      category: "Illustration"
+    },
+    {
+      id: 9,
+      title: "Drawing",
+      description: "A hand-drawn character showing unique style and expression.",
+      image: "/lovable-uploads/dr3.jpg",
+      category: "Illustration"
+    },
+
+    
   ];
 
   return (
@@ -59,9 +78,11 @@ const Drawings = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
-                <Star className="w-6 h-6 text-white" />
-              </div>
+            <img 
+                src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
+                alt="Crafty Bites Logo" 
+                className="w-10 h-10 rounded-lg"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Crafty Bites
               </span>
@@ -131,7 +152,22 @@ const Drawings = () => {
                               </div>
                             </DialogContent>
                           </Dialog>
-                          <Heart className="w-5 h-5" />
+                          <motion.div
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => {
+                              if (likedDrawings.includes(drawing.id)) {
+                                setLikedDrawings(likedDrawings.filter(id => id !== drawing.id));
+                              } else {
+                                setLikedDrawings([...likedDrawings, drawing.id]);
+                              }
+                            }}
+                          >
+                            <Heart 
+                              className="w-5 h-5"
+                              fill={likedDrawings.includes(drawing.id) ? "#ff0000" : "none"}
+                            />
+                          </motion.div>
                         </div>
                       </div>
                     </div>
@@ -167,7 +203,7 @@ const Drawings = () => {
           </p>
           <Link to="/contact">
             <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3">
-              Get a Quote
+            Start a Project
             </Button>
           </Link>
         </div>

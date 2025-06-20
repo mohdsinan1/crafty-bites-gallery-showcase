@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Palette, Heart, Hammer, Scissors, ArrowRight } from "lucide-react";
+import { Palette, Heart, Scissors, ArrowRight, Ribbon, WholeWord, ClipboardIcon } from "lucide-react";
 
 const Index = () => {
   const categories = [
@@ -14,21 +14,21 @@ const Index = () => {
     },
     {
       title: "Bouquets",
-      description: "Beautiful floral arrangements for every special occasion",
+      description: "A charming handcrafted bouquet to brighten any moment",
       icon: Heart,
       color: "bg-gradient-to-br from-pink-400 to-rose-400",
       path: "/bouquets"
     },
     {
-      title: "Hamber",
-      description: "Unique handcrafted pieces with attention to detail",
-      icon: Hammer,
+      title: "Wedding Crafts",
+      description: "Tied together with love and endless dreams",
+      icon: ClipboardIcon,
       color: "bg-gradient-to-br from-amber-400 to-orange-400",
       path: "/hamber"
     },
     {
       title: "Crafting",
-      description: "Creative DIY projects and handmade treasures",
+      description: "Turning imagination into handmade magic",
       icon: Scissors,
       color: "bg-gradient-to-br from-emerald-400 to-teal-400",
       path: "/crafting"
@@ -55,7 +55,7 @@ const Index = () => {
               <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">Home</Link>
               <Link to="/drawings" className="text-gray-700 hover:text-orange-600 transition-colors">Drawings</Link>
               <Link to="/bouquets" className="text-gray-700 hover:text-orange-600 transition-colors">Bouquets</Link>
-              <Link to="/hamber" className="text-gray-700 hover:text-orange-600 transition-colors">Hamber</Link>
+              <Link to="/hamber" className="text-gray-700 hover:text-orange-600 transition-colors">Wedding Crafts</Link>
               <Link to="/crafting" className="text-gray-700 hover:text-orange-600 transition-colors">Crafting</Link>
               <Link to="/contact" className="text-gray-700 hover:text-orange-600 transition-colors">Contact</Link>
             </div>
@@ -89,10 +89,12 @@ const Index = () => {
               artistic drawings, beautiful bouquets, and unique creations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-8 py-3">
-                Explore My Work
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <Link to="/drawings">
+                <Button size="lg" className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-8 py-3">
+                  Explore My Work
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
               <Link to="/contact">
                 <Button size="lg" variant="outline" className="border-orange-300 text-orange-600 hover:bg-orange-50 px-8 py-3">
                   Contact Me
@@ -154,7 +156,7 @@ const Index = () => {
           </p>
           <Link to="/contact">
             <Button size="lg" className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-12 py-4 text-lg">
-              Start Your Project
+              Start Your Work
               <ArrowRight className="ml-2 w-6 h-6" />
             </Button>
           </Link>

@@ -1,52 +1,79 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Star, Hammer, Wrench, Award } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ArrowLeft, Star, ClipboardIcon, Eye, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Hamber = () => {
+  const [likedWorks, setLikedWorks] = useState<number[]>([]);
   const hamberWorks = [
     {
       id: 1,
-      title: "Artisan Wood Table",
-      description: "Handcrafted dining table from reclaimed oak",
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
-      material: "Oak Wood"
+      title: "Custom Wedding Invitation",
+      description: "Handcrafted wedding decor and keepsakes to make your big day truly special",
+      image: "/lovable-uploads/IMG_6075.JPG",
+      material: "Premium Cardstock"
     },
     {
       id: 2,
-      title: "Custom Storage Bench",
-      description: "Functional seating with hidden compartments",
-      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=300&fit=crop",
-      material: "Pine & Fabric"
+      title: "Save the Date Card",
+      description: "Creative and beautifully designed save the date card",
+      image: "/lovable-uploads/WhatsApp Image 2025-06-18 at 15.12.17_032dcd9d.jpg",
+      material: "Glossy Paper"
     },
     {
       id: 3,
-      title: "Decorative Wall Shelf",
-      description: "Floating shelves with artistic metal brackets",
-      image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop",
-      material: "Walnut"
+      title: "Wedding Invitation Card",
+      description: "Heartfelt thank you card for your special day",
+      image: "/lovable-uploads/IMG_8056[1].jpg",
+      material: "Pearlescent Paper"
     },
     {
       id: 4,
-      title: "Garden Planter Box",
-      description: "Weather-resistant outdoor planters",
-      image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop",
-      material: "Cedar"
+      title: "Save the Date Card",
+      description: "Elegant and personalized wedding invitation card",
+      image: "/lovable-uploads/IMG_2635.jpg",
+      material: "Pearlescent Paper"
     },
     {
       id: 5,
-      title: "Rustic Picture Frame",
-      description: "Barn wood frames for cherished memories",
-      image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
-      material: "Reclaimed Wood"
+      title: "Wedding Invitation Card",
+      description: "Heartfelt thank you card for your special day",
+      image: "/lovable-uploads/craft5.png",
+      material: "Pearlescent Paper"
     },
     {
       id: 6,
-      title: "Tool Organizer",
-      description: "Custom workshop storage solution",
-      image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&h=300&fit=crop",
-      material: "Birch Plywood"
-    }
+      title: "Event Invitation",
+      description: "A charming handcrafted invitation card",
+      image: "/lovable-uploads/craft4.png",
+      material: "Event Cards"
+    },
+    {
+      id: 7,
+      title: "Wedding Anniversary Card",
+      description: "Heartfelt thank you card for your special day",
+      image: "/lovable-uploads/craft1.png",
+      material: "Greeting Cards"
+    },
+    {
+      id: 8,
+      title: "Wedding Invitation Card",
+      description: "Heartfelt thank you card for your special day",
+      image: "/lovable-uploads/craft2.png",
+      material: "Pearlescent Paper"
+    },
+    {
+      id: 9,
+      title: "Get-Together Invitation",
+      description: "A charming handmade invitation card for a memorable batch reunion",
+      image: "/lovable-uploads/craft3.png",
+      material: "Event Cards”"
+    },
+    
+
   ];
 
   return (
@@ -56,9 +83,11 @@ const Hamber = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full flex items-center justify-center">
-                <Star className="w-6 h-6 text-white" />
-              </div>
+            <img 
+                src="/lovable-uploads/5c70765b-c8e6-4f74-bc19-4caf830e0b1b.png" 
+                alt="Crafty Bites Logo" 
+                className="w-10 h-10 rounded-lg"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
                 Crafty Bites
               </span>
@@ -77,9 +106,9 @@ const Hamber = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center mb-6">
-            <Hammer className="w-16 h-16 text-amber-500 mr-4" />
+            <ClipboardIcon className="w-16 h-16 text-amber-500 mr-4" />
             <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-              Hamber
+            Wedding Crafts
             </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -105,8 +134,45 @@ const Hamber = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                       <div className="p-4 text-white">
                         <div className="flex items-center space-x-4">
-                          <Wrench className="w-5 h-5" />
-                          <Award className="w-5 h-5" />
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <button className="hover:scale-110 transition-transform">
+                                <Eye className="w-5 h-5" />
+                              </button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl w-full max-h-[90vh] p-0">
+                              <div className="relative">
+                                <img 
+                                  src={work.image} 
+                                  alt={work.title}
+                                  className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                                />
+                                <div className="p-6">
+                                  <h3 className="text-2xl font-bold mb-2">{work.title}</h3>
+                                  <p className="text-gray-600 mb-2">{work.description}</p>
+                                  <span className="text-sm font-medium text-amber-600 bg-amber-100 px-3 py-1 rounded-full">
+                                    {work.material}
+                                  </span>
+                                </div>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+                          <motion.div
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => {
+                              if (likedWorks.includes(work.id)) {
+                                setLikedWorks(likedWorks.filter(id => id !== work.id));
+                              } else {
+                                setLikedWorks([...likedWorks, work.id]);
+                              }
+                            }}
+                          >
+                            <Heart 
+                              className="w-5 h-5"
+                              fill={likedWorks.includes(work.id) ? "#ff0000" : "none"}
+                            />
+                          </motion.div>
                         </div>
                       </div>
                     </div>
@@ -135,14 +201,14 @@ const Hamber = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-amber-100 to-orange-100">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-            Need Custom Woodwork?
+            Need Custom Wedding Craft?
           </h2>
           <p className="text-lg text-gray-600 mb-6">
             Let's build something amazing together. Custom furniture and woodworking projects welcome.
           </p>
           <Link to="/contact">
             <Button size="lg" className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-3">
-              Request a Quote
+            Start a Project
             </Button>
           </Link>
         </div>

@@ -1,52 +1,44 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Heart, Flower, Gift } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ArrowLeft, Heart, Flower, Gift, Eye } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Bouquets = () => {
+  const [likedBouquets, setLikedBouquets] = useState<number[]>([]);
   const bouquets = [
     {
       id: 1,
-      title: "Spring Awakening",
-      description: "Fresh tulips and daffodils in pastel harmony",
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&h=300&fit=crop",
-      occasion: "Spring"
+      title: "Choco Bliss Bouquet",
+      description: "A delightful edible bouquet crafted with candies and chocolates, perfect for gifting or celebrations.",
+      image: "/lovable-uploads/IMG_6047 (1).jpg",
+      occasion: "Gift",
     },
     {
       id: 2,
-      title: "Romantic Rose Garden",
-      description: "Classic red roses with baby's breath",
-      image: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=400&h=300&fit=crop",
-      occasion: "Romance"
+      title: "Choco Bliss Bouquet",
+      description: "Perfect for gifting or celebrations.",
+      image: "/lovable-uploads/IMG_6057 (1).jpg",
+      occasion: "Gift"
     },
     {
       id: 3,
-      title: "Wildflower Meadow",
-      description: "Natural arrangement with local wildflowers",
-      image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop",
-      occasion: "Casual"
+      title: "Treat Bouquet",
+      description: "Emphasizes that it’s an edible, fun, and celebratory craft",
+      image: "/lovable-uploads/IMG_6068.png",
+      occasion: "Gift"
     },
     {
       id: 4,
-      title: "Elegant White",
-      description: "Sophisticated white lilies and orchids",
-      image: "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400&h=300&fit=crop",
-      occasion: "Formal"
-    },
-    {
-      id: 5,
-      title: "Sunset Celebration",
-      description: "Warm oranges and yellows for joyful moments",
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&h=300&fit=crop",
-      occasion: "Celebration"
-    },
-    {
-      id: 6,
-      title: "Lavender Dreams",
-      description: "Calming lavender and purple blooms",
-      image: "https://images.unsplash.com/photo-1463320726281-696a485928c7?w=400&h=300&fit=crop",
-      occasion: "Relaxation"
+      title: "Edible Delight Bouquet",
+      description: "A playful bouquet bursting with colorful chocolates, bringing a smile to any sweet tooth.",
+      image: "/lovable-uploads/IMG_5929.png",
+      occasion: "Gift"
     }
+    
+  
   ];
 
   return (
@@ -85,8 +77,8 @@ const Bouquets = () => {
             </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Beautiful floral arrangements crafted with love for every special occasion. 
-            From romantic gestures to celebratory moments, each bouquet tells a story.
+          Beautifully handcrafted bouquets designed to brighten any occasion. 
+          Each arrangement is thoughtfully curated with fresh flowers and artistic touches.
           </p>
         </div>
       </section>
@@ -106,8 +98,45 @@ const Bouquets = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                       <div className="p-4 text-white">
                         <div className="flex items-center space-x-4">
-                          <Flower className="w-5 h-5" />
-                          <Gift className="w-5 h-5" />
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <button className="hover:scale-110 transition-transform">
+                                <Eye className="w-5 h-5" />
+                              </button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl w-full max-h-[90vh] p-0">
+                              <div className="relative">
+                                <img 
+                                  src={bouquet.image} 
+                                  alt={bouquet.title}
+                                  className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                                />
+                                <div className="p-6">
+                                  <h3 className="text-2xl font-bold mb-2">{bouquet.title}</h3>
+                                  <p className="text-gray-600 mb-2">{bouquet.description}</p>
+                                  <span className="text-sm font-medium text-pink-600 bg-pink-100 px-3 py-1 rounded-full">
+                                    {bouquet.occasion}
+                                  </span>
+                                </div>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+                          <motion.div
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => {
+                              if (likedBouquets.includes(bouquet.id)) {
+                                setLikedBouquets(likedBouquets.filter(id => id !== bouquet.id));
+                              } else {
+                                setLikedBouquets([...likedBouquets, bouquet.id]);
+                              }
+                            }}
+                          >
+                            <Heart 
+                              className="w-5 h-5"
+                              fill={likedBouquets.includes(bouquet.id) ? "#ff0000" : "none"}
+                            />
+                          </motion.div>
                         </div>
                       </div>
                     </div>
