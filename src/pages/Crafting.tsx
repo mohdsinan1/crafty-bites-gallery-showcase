@@ -48,7 +48,7 @@ const Crafting = () => {
       id: 6,
       title: "White Handmade Teddy",
       description: "A handmade soft toy teddy",
-      image: "/public/lovable-uploads/IMG_8711.jpg",
+      image: "/lovable-uploads/IMG_8711.jpg",
       category: "Handmade Soft Toys"
     },
   ];
