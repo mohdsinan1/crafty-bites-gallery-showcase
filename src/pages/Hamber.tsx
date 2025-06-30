@@ -112,7 +112,7 @@ const Hamber = () => {
             </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Precision-crafted woodworking and handmade furniture pieces. Each item is built 
+           Handcrafted card designed to capture the elegance of your special day. Perfect for
             with attention to detail and designed to last for generations.
           </p>
         </div>

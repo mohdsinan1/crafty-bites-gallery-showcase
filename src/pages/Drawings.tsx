@@ -20,7 +20,7 @@ const Drawings = () => {
     {
       id: 1,
       title: "Sacred Architecture",
-      description: "Beautiful watercolor painting of the Prophet's Mosque with intricate details",
+      description: "watercolor painting of the Prophet's Mosque with intricate details",
       image: "/lovable-uploads/17fc901c-b86d-4f9e-a282-f56f51bb2263.png",
       category: "Religious Art"
     },
@@ -35,7 +35,7 @@ const Drawings = () => {
     {
       id: 5,
       title: "Sacred Architecture",
-      description: "Beautiful watercolor painting of The Qabha Sharif",
+      description: "watercolor painting of The Qabha Sharif",
       image: "/lovable-uploads/IMG_1924.png",
       category: "Religious Art"
     },
