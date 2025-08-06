@@ -10,13 +10,6 @@ const Hamber = () => {
   const [likedWorks, setLikedWorks] = useState<number[]>([]);
   const hamberWorks = [
     {
-      id: 1,
-      title: "Custom Wedding Invitation",
-      description: "Handcrafted wedding decor and keepsakes to make your big day truly special",
-      image: "/lovable-uploads/IMG_6075.JPG",
-      material: "Premium Cardstock"
-    },
-    {
       id: 2,
       title: "Save the Date Card",
       description: "Creative and beautifully designed save the date card",
